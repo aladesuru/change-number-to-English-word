@@ -48,13 +48,23 @@ function numberToEnglish(n, custom_join_character = "and") {
     }
 
     /* Array of units as words */
-    units = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+    units = [
+              '', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 
+              'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 
+              'seventeen', 'eighteen', 'nineteen'
+            ];
 
     /* Array of tens as words */
     tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 
     /* Array of scales as words */
-    scales = ['', 'thousand', 'million', 'billion', 'trillion', 'quadrillion', 'quintillion', 'sextillion', 'septillion', 'octillion', 'nonillion', 'decillion', 'undecillion', 'duodecillion', 'tredecillion', 'quatttuor-decillion', 'quindecillion', 'sexdecillion', 'septen-decillion', 'octodecillion', 'novemdecillion', 'vigintillion', 'centillion'];
+    scales = [
+                '', 'thousand', 'million', 'billion', 'trillion', 'quadrillion', 
+                'quintillion', 'sextillion', 'septillion', 'octillion', 'nonillion', 
+                'decillion', 'undecillion', 'duodecillion', 'tredecillion', 'quatttuor-decillion', 
+                'quindecillion', 'sexdecillion', 'septen-decillion', 'octodecillion', 'novemdecillion', 
+                'vigintillion', 'centillion'
+              ];
 
     /* Split user arguemnt into 3 digit chunks from right to left */
     start = string.length;
@@ -120,6 +130,5 @@ function numberToEnglish(n, custom_join_character = "and") {
         }
 
     }
-
     return words.reverse().join(' ');
 }
