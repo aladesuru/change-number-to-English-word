@@ -1,0 +1,72 @@
+/*********************************************
+* Reset
+**********************************************/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*********************************************
+* Element base style
+**********************************************/
+body
+{
+  font-family: "Lato" , san-serf;
+  font-size: 100%;
+  line-height: 1.4;
+  background-color: #fff;
+  color: #777;
+}
+
+section
+{
+  width: 100%;
+  display: block;
+}
+
+p
+{
+  padding: 5px;
+}
+
+
+form input
+{
+  border-radius: 0;
+  border: none;
+  outline: none;
+  height: 30px;
+  padding: 0 10px;
+  font-size: .98em;
+}
+
+/*********************************************
+* base style for wrapper 
+**********************************************/
+.wrapper{
+  width: 90%;
+  margin: auto;
+  max-width: 1200px;
+}
+
+/*********************************************
+* wrapper media query section
+**********************************************/
+@media all and (max-width: 768px)
+{
+  .wrapper{
+    width: 98%;
+  }
+ 
+}
+
+/*********************************************
+* base style for heading
+**********************************************/
+
+
+
+
+
