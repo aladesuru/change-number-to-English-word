@@ -31,13 +31,13 @@ let eventUtility = {
   } 
 };
 
-// function that convert the number
-function numberToEnglish(n, custom_join_character = "and") {
 
 /*********************************************
-* variable Declearation
+*  function that convert the number
 **********************************************/
+function numberToEnglish(n, custom_join_character = "and") {
 
+// variable Declearation
     var string = n.toString(),
         units, tens, scales, start, end, chunks, chunksLen, chunk, ints, i, word, words;
 
