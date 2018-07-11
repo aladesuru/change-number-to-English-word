@@ -1,9 +1,9 @@
-/* For crossbrowser compatiblity i created an 
+/* For crossbrowser compatiblity 
 *  event utitilities to access Event object regardless of how event handler is define 
 *  and also provide support for browser that is not DOM event compliant 
 */
 
-let eventUtility = {
+let EventUtility = {
 	addHandler : (element , type , handler) => {
 		if (element.addEventListener) {
 			element.addEventListener(type , handler , false);
@@ -35,10 +35,10 @@ let eventUtility = {
 /*********************************************
 *  function that convert the number
 **********************************************/
-function numberToEnglish(n, custom_join_character = "and") {
+function numberToEnglish(valueToEnglish, custom_join_character = "and") {
 
 // variable Declearation
-    var string = n.toString(),
+    let string = valueToEnglish.toString(),
         units, tens, scales, start, end, chunks, chunksLen, chunk, ints, i, word, words;
 
 
@@ -49,7 +49,7 @@ function numberToEnglish(n, custom_join_character = "and") {
 
     /* Array of units as words */
     units = [
-              '', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 
+              '', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'ten', 
               'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 
               'seventeen', 'eighteen', 'nineteen'
             ];
@@ -58,15 +58,9 @@ function numberToEnglish(n, custom_join_character = "and") {
     tens = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 
     /* Array of scales as words */
-    scales = [
-                '', 'thousand', 'million', 'billion', 'trillion', 'quadrillion', 
-                'quintillion', 'sextillion', 'septillion', 'octillion', 'nonillion', 
-                'decillion', 'undecillion', 'duodecillion', 'tredecillion', 'quatttuor-decillion', 
-                'quindecillion', 'sexdecillion', 'septen-decillion', 'octodecillion', 'novemdecillion', 
-                'vigintillion', 'centillion'
-              ];
+    scales = ['', 'thousand', 'million', 'billion' ];
 
-    /* Split user arguemnt into 3 digit chunks from right to left */
+    /* Split user argument into 3 digit chunks from right to left */
     start = string.length;
     chunks = [];
     while (start > 0) {
@@ -119,7 +113,6 @@ function numberToEnglish(n, custom_join_character = "and") {
                 if (ints[2] || !i && chunksLen) {
                     words.push(custom_join_character);
                 }
-
             }
 
             /* Add hundreds word if array item exists */
@@ -128,7 +121,35 @@ function numberToEnglish(n, custom_join_character = "and") {
             }
 
         }
-
     }
     return words.reverse().join(' ');
 }
+
+
+/*********************************************
+*  when convert to word buuton is click
+**********************************************/
+// variable Declearation
+let numberTextField = document.getElementById("number-text-field");   
+let convertToWordBtn = document.getElementById("convert-to-word-btn");
+let content = document.getElementById("content");
+
+ // callback funtion when convert to word button is click
+let convertToWordBtnClick = event => {     
+  event = EventUtility.getEvent(event);
+  EventUtility.preventDefault(event);
+
+  //check if value is number then display the number equivalent to British
+  // else display Invalid value please enter number
+  if (numberTextField.value && !isNaN(numberTextField.value)) {
+    content.innerHTML = numberToEnglish(numberTextField.value); 
+  }else{
+    content.innerHTML = "Invalid value please enter number";
+  }
+}
+
+// call the callback funtion on convert to word button when clicked 
+EventUtility.addHandler(convertToWordBtn , "click" , convertToWordBtnClick);
+
+// set focus 
+numberTextField.focus();
