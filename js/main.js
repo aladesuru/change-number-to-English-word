@@ -41,7 +41,6 @@ function numberToEnglish(valueToEnglish, custom_join_character = "and") {
     let string = valueToEnglish.toString(),
         units, tens, scales, start, end, chunks, chunksLen, chunk, ints, i, word, words;
 
-
     /* Is number zero? */
     if (parseInt(string) === 0) {
         return 'zero';
@@ -127,7 +126,7 @@ function numberToEnglish(valueToEnglish, custom_join_character = "and") {
 
 
 /*********************************************
-*  when convert to word buuton is click
+*   convert to word button event handler 
 **********************************************/
 // variable Declearation
 let numberTextField = document.getElementById("number-text-field");   
